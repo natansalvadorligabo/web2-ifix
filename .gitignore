@@ -22,3 +22,19 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Maven / Gradle / IntelliJ IDEA specific files
+target/                 # Maven/Gradle build output
+*.iml                   # IntelliJ IDEA project files
+.idea/                  # IntelliJ IDEA folder
+*.ipr
+*.iws
+*.gradle                # Gradle project files
+.gradle/
+build/                  # Gradle build folder
+
+# Other
+*.swp                   # Swap files
+*.swo
+.DS_Store               # macOS file system metadata
+Thumbs.db               # Windows file system metadata
