@@ -9,7 +9,16 @@ public class Customer {
     private String phone;
     private String cpf;
     private Boolean active;
-   
+	private Address address;
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	public Long getId() {
 		return id;
 	}
