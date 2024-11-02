@@ -53,7 +53,7 @@ public class ServiceOrderServlet extends HttpServlet {
         Double value = Double.parseDouble(request.getParameter("value"));
         String observation = request.getParameter("observation");
         Long customerId = Long.parseLong(request.getParameter("customerId"));
-        Long paymentMethodId = Long.parseLong(request.getParameter("paymentMethod"));
+        Long paymentMethodId = Long.parseLong(request.getParameter("paymentMethodId"));
         String status = request.getParameter("status");
 
         CustomerDao customerDao = new CustomerDao(DataSourceSearcher.getInstance().getDataSource());
@@ -75,10 +75,14 @@ public class ServiceOrderServlet extends HttpServlet {
         ServiceOrderDao serviceOrderDao = new ServiceOrderDao(DataSourceSearcher.getInstance().getDataSource());
         serviceOrder.setId(0L);
 
+        RequestDispatcher dispatcher = null;
+
         if (serviceOrderDao.save(serviceOrder)) {
-            response.sendRedirect("/pages/home.jsp");
+            dispatcher = request.getRequestDispatcher("/home");
         } else {
-            response.sendRedirect("/pages/home.jsp");
+            dispatcher = request.getRequestDispatcher("/home");
         }
+
+        dispatcher.forward(request, response);
     }
 }

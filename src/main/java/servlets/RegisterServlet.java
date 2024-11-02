@@ -77,7 +77,7 @@ public class RegisterServlet extends HttpServlet {
 				HttpSession session = req.getSession();
 				session.setAttribute("customer", customer);
 				req.setAttribute("registrationStatus", "success");
-				dispatcher = req.getRequestDispatcher("/pages/home.jsp");
+				dispatcher = req.getRequestDispatcher("home");
 			} else {
 				req.setAttribute("registrationStatus", "fail");
 				dispatcher = req.getRequestDispatcher("/pages/customer.jsp");

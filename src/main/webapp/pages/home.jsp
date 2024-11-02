@@ -15,21 +15,21 @@
     <jsp:include page="/components/navbar.jsp" />
 
     <div class="container mx-auto p-4 mt-8">
-        <div class="stats stats-vertical md:stats-horizontal shadow w-full">
-            <div class="stat hover:bg-secondary-content">
+        <div class="stats stats-vertical md:stats-horizontal shadow-md w-full">
+            <div class="stat hover:bg-secondary-content transition">
                 <div class="stat-title">Total Revenue</div>
                 <div class="stat-value text-primary">${totalRevenue}</div>
                 <div class="stat-desc">Accumulated over time</div>
             </div>
 
-            <div class="stat hover:bg-secondary-content">
+            <div class="stat hover:bg-secondary-content transition">
                 <div class="stat-title">Average Order Value</div>
                 <div class="stat-value text-secondary">${averageOrderValue}</div>
                 <div class="stat-desc">Per order</div>
             </div>
 
-            <div class="stat hover:bg-secondary-content">
-                <div class="stat-value">${approvedPercentage}%</div>
+            <div class="stat hover:bg-secondary-content transition">
+                <div class="stat-value">${Math.round(approvedPercentage * 100.0) / 100.0}%</div>
                 <div class="stat-title">Orders Completed</div>
                 <div class="stat-desc text-secondary">${ordersRemaining} orders remaining</div>
             </div>
@@ -136,5 +136,6 @@
             </table>
         </div>
     </div>
+
 </body>
 </html>

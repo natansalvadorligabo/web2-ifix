@@ -31,8 +31,8 @@
                     <span>This email is already registered! Try again.</span>
                 </div>
             </c:if>
-            <img class="mx-auto h-40 w-auto" src="./assets/logo_ifix.png" alt="IFix">
-            <h2 class="mt-4 mb-4 text-2xl font-bold text-center text-neutral">Create a Customer</h2>
+            <%-- <img class="mx-auto h-40 w-auto" src="./assets/logo_ifix.png" alt="IFix"> --%>
+            <h2 class="mt-4 mb-4 text-2xl font-bold text-center text-secondary">Create a Customer</h2>
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

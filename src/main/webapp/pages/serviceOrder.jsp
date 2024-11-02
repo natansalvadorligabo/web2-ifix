@@ -15,7 +15,7 @@
 
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-md">
-            <h2 class="mt-4 mb-4 text-2xl font-bold text-center text-neutral">Create Service Order</h2>
+            <h2 class="mt-4 mb-4 text-2xl font-bold text-center text-secondary">Create Service Order</h2>
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-md">
@@ -80,5 +80,6 @@
             </form>
         </div>
     </div>
+
 </body>
 </html>
