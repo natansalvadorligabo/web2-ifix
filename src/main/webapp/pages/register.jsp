@@ -29,44 +29,44 @@
                     <span>Your email is already registered! Try again.</span>
                 </div>
             </c:if>
-            <h2 class="mt-16 mb-4 text-2xl font-bold text-center text-neutral">Register your account</h2>
+            <h2 class="mt-16 mb-4 text-2xl font-bold text-center text-secondary">Register your account</h2>
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form action="register" method="post" class="space-y-6">
                 <div>
-                    <label for="name" class="font-semibold">Name</label>
-                    <input type="text" id="name" name="name" required
-                           class="input input-bordered w-full mt-2">
+                    <label for="email" class="font-semibold">Email<span class="text-error">*</span></label>
+                    <input type="email" id="email" name="email" required class="input input-bordered w-full mt-2">
                 </div>
+                <span id="error-email" class="text-error hidden"></span>
 
                 <div>
-                    <label for="email" class="font-semibold">Email</label>
-                    <input type="email" id="email" name="email" required
-                           class="input input-bordered w-full mt-2">
+                    <label for="password" class="font-semibold">Password<span class="text-error">*</span></label>
+                    <input type="password" id="password" name="password" required class="input input-bordered w-full mt-2">
                 </div>
+                <span id="error-password" class="text-error hidden"></span>
 
                 <div>
-                    <label for="phone" class="font-semibold">Phone</label>
-                    <input type="tel" id="phone" name="phone" minlength="10" maxlength="11" pattern="\d{10,11}" required
-                           class="input input-bordered w-full mt-2">
+                     <label for="confirmPassword" class="font-semibold">Confirm Password<span class="text-error">*</span></label>
+                     <input type="password" id="confirmPassword" name="confirmPassword" required class="input input-bordered w-full mt-2">
                 </div>
+                <span id="error-confirmPassword" class="text-error hidden"></span>
 
-                <div>
-                    <label for="cpf" class="font-semibold">CPF</label>
-                    <input type="text" id="cpf" name="cpf" pattern="\d{11}" minlength="11" maxlength="11" required
-                           class="input input-bordered w-full mt-2">
-                </div>
-
-                <div>
-                    <button type="submit" class="btn btn-primary w-full">
+                <div class="space-y-2">
+                    <button type="submit" class="btn btn-primary btn-block">
                         Register
                     </button>
+
+                    <a href="login" class="btn btn-outline btn-block">
+                        Go back
+                    </a>
                 </div>
             </form>
         </div>
     </div>
 
     <script defer src="./script/timeAlert.js"></script>
+    <script defer src="./script/validateRegister.js"></script>
+    <script defer src="./script/themeController.js"></script>
 </body>
 </html>

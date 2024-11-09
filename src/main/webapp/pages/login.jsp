@@ -11,48 +11,53 @@
     <title>Login - IFix</title>
 </head>
 <body class="min-h-screen bg-base-200">
-<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-        <c:if test="${registrationStatus == 'fail'}">
-            <div role="alert" class="alert alert-error w-fit message-alert">
-                <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-6 w-6 shrink-0 stroke-current"
-                        fill="none"
-                        viewBox="0 0 24 24">
-                    <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>Your email is already registered! Try again.</span>
-            </div>
-        </c:if>
-        <img class="mx-auto h-40 w-auto" src="./assets/logo_ifix.png" alt="IFix">
-        <h2 class="mt-4 mb-4 text-2xl font-bold text-center text-neutral">Sign in</h2>
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+            <c:if test="${registrationStatus == 'fail'}">
+                <div role="alert" class="alert alert-error w-fit message-alert">
+                    <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 shrink-0 stroke-current"
+                            fill="none"
+                            viewBox="0 0 24 24">
+                        <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Your email is already registered! Try again.</span>
+                </div>
+            </c:if>
+            <h2 class="mt-16 mb-4 text-2xl font-bold text-center text-secondary">Sign in</h2>
+        </div>
+
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            <form action="login" method="post" class="space-y-6">
+                <div>
+                    <label for="email" class="font-semibold">Email</label>
+                    <input type="email" id="email" name="email" required class="input input-bordered w-full mt-2">
+                </div>
+
+                <div>
+                     <label for="password" class="font-semibold">Password</label>
+                     <input type="password" id="password" name="password" required class="input input-bordered w-full mt-2">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                    Login
+                </button>
+
+                <p class="mt-10 text-center text-sm">
+                    Not a member yet?
+                    <a href="register" class="link link-accent">Sign up</a>
+                </p>
+            </form>
+        </div>
     </div>
 
-    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form action="login" method="post" class="space-y-6">
-            <div>
-                <label for="email" class="font-semibold">Email<span class="text-error">*</span></label>
-                <input type="email" id="email" name="email" required
-                       class="input input-bordered w-full mt-2">
-            </div>
-
-            <button type="submit" class="btn btn-primary w-full">
-                Login
-            </button>
-
-            <p class="mt-10 text-center text-sm">
-                Not a member yet?
-                <a href="register" class="link link-accent">Sign up</a>
-            </p>
-        </form>
-    </div>
-</div>
-
-<script defer src="./script/timeAlert.js"></script>
+    <script defer src="./script/timeAlert.js"></script>
+    <script defer src="./script/validateLogin.js"></script>
+    <script defer src="./script/themeController.js"></script>
 </body>
 </html>

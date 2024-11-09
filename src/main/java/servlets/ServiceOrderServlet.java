@@ -22,7 +22,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
-@WebServlet("/serviceOrder")
+@WebServlet("/createServiceOrder")
 public class ServiceOrderServlet extends HttpServlet {
 
     @Serial
@@ -41,7 +41,7 @@ public class ServiceOrderServlet extends HttpServlet {
         req.setAttribute("customers", customers);
         req.setAttribute("paymentMethods", paymentMethods);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/pages/serviceOrder.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/pages/createServiceOrder.jsp");
         dispatcher.forward(req, res);
     }
 

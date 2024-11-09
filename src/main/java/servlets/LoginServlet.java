@@ -10,18 +10,18 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.User;
 import util.DataSourceSearcher;
-import util.PasswordEncoder;
 
 import java.io.IOException;
+import java.util.Optional;
 
-@WebServlet("/register")
-public class RegisterServlet extends HttpServlet {
+@WebServlet("/login")
+public class LoginServlet extends HttpServlet {
 
-    public RegisterServlet() { super(); }
+    public LoginServlet() { super(); }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/pages/register.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/pages/login.jsp");
         dispatcher.forward(req, resp);
     }
 
@@ -30,22 +30,23 @@ public class RegisterServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        User user = new User();
-        user.setEmail(email);
-        user.setPassword(PasswordEncoder.encode(password));
-
-        RequestDispatcher dispatcher = null;
+        String url;
 
         UserDao userDao = new UserDao(DataSourceSearcher.getInstance().getDataSource());
 
-        if(userDao.save(user)) {
-            req.setAttribute("registrationStatus", "success");
-            dispatcher = req.getRequestDispatcher("/pages/login.jsp");
-        } else {
-            req.setAttribute("registrationStatus", "fail");
-            dispatcher = req.getRequestDispatcher("/pages/register.jsp");
+        Optional<User> optional = userDao.getUserByEmailAndPassword(email, password);
+        if(optional.isPresent()) {
+            User user = optional.get();
+            HttpSession session = req.getSession();
+            session.setMaxInactiveInterval(60 * 30); // 30 minutes
+            session.setAttribute("user", user);
+            url = "/home";
+        }else {
+            req.setAttribute("result", "loginError");
+            url = "/pages/login.jsp";
         }
 
+        RequestDispatcher dispatcher = req.getRequestDispatcher(url);
         dispatcher.forward(req, resp);
     }
 }

@@ -27,7 +27,7 @@ public class HomeServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-//        HttpSession session = req.getSession(false);
+        HttpSession session = req.getSession(false);
 
         CustomerDao customerDao = new CustomerDao(DataSourceSearcher.getInstance().getDataSource());
         ServiceOrderDao serviceOrderDao = new ServiceOrderDao(DataSourceSearcher.getInstance().getDataSource());
@@ -51,14 +51,14 @@ public class HomeServlet extends HttpServlet {
         req.setAttribute("approvedPercentage", completedPercentage);
         req.setAttribute("ordersRemaining", ordersRemaining);
 
-//        if (session != null) {
-//            Employee employee = (Employee) session.getAttribute("employee");
-//            if (customer != null) {
-//                session.setAttribute("employee", employee);
-//            } else {
-//                req.setAttribute("errorMessage", "no employee found in session");
-//            }
-//        }
+        if (session != null) {
+            User user = (User) session.getAttribute("user");
+            if (user != null) {
+                session.setAttribute("user", user);
+            } else {
+                req.setAttribute("errorMessage", "no user found in session");
+            }
+        }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/pages/home.jsp");
         dispatcher.forward(req, res);
